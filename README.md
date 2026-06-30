@@ -1,50 +1,56 @@
-# Welcome to your Expo app 👋
+# PixLoom
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A wallpaper browsing app for iOS and Android, built with React Native and Expo. Browse curated wallpapers across collections, preview them full-screen, and save them straight to your device gallery.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Three-tab navigation** — *For You*, *Explore*, and *Account*, using file-based routing.
+- **Explore** — an animated carousel header that scales and fades on scroll, sitting above a two-column wallpaper grid.
+- **For You** — swipeable top-tab sections for *Library*, *Liked*, and *Suggested* collections.
+- **Full-screen preview** — tapping any wallpaper opens a draggable bottom sheet with the image, title, and actions.
+- **Download to gallery** — saves the selected wallpaper to the device's photo library, with runtime permission handling.
+- **Light / dark / system theming** — switchable from the Account tab and applied across every screen.
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+- **React Native**
+- **TypeScript**
+- **Expo Router** — file-based navigation
+- **React Navigation** — material top tabs
+- **React Native Reanimated** — carousel and scroll-driven header animations
+- **Gorhom Bottom Sheet** — preview sheet
+- **Expo Media Library** + **Expo File System** — image download and gallery saving
 
-   ```bash
-    npx expo start
-   ```
+## Getting Started
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+**Prerequisites:** Node.js, the Expo Go app (or an Android/iOS emulator).
 
 ```bash
-npm run reset-project
+# 1. Install dependencies
+npm install
+
+# 2. Add your environment variables (see below)
+
+# 3. Start the dev server
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Scan the QR code with Expo Go, or press `a` / `i` to launch an Android emulator or iOS simulator.
 
-## Learn more
+### Environment
 
-To learn more about developing your project with Expo, look at the following resources:
+Create a `.env` file in the project root:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+REACT_APP_UNSPLASH_API_KEY=your_key_here
+```
 
-## Join the community
+## Project Structure
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```
+app/            Screens and routing (tab layout + For You / Explore / Account)
+components/     Reusable UI (ImageCard, SplitView, BottomSheet, themed views)
+hooks/          Wallpaper data, carousel data, color-scheme helpers
+constants/      Theme colors
+services/       Data-source layer
+```
